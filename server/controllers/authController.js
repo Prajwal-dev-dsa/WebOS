@@ -26,6 +26,16 @@ const registerUser = async (req, res) => {
         .json({ success: false, message: "User already exists" });
     }
 
+    //check if password is at least 3 characters long
+    if (password.length < 3) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Password must be at least 3 characters long",
+        });
+    }
+
     //create user
     const user = await User.create({ username, password });
     if (user) {

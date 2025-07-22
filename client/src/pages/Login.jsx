@@ -17,8 +17,8 @@ function Login() {
         { username, password }
       );
       localStorage.setItem("token", response.data.token); //store the token in the local storage
-      toast.success("Login successful");
-      navigate("/Desktop"); //navigate to the desktop page
+      toast.success("Login successful 🎉");
+      navigate("/desktop"); //navigate to the desktop page
     } catch (error) {
       toast.error(error?.response?.data?.message || "Uh oh! An error occurred");
     }
