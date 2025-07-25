@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useStartMenu } from "../context/StartMenuContext";
 import SearchBar from "./SearchBar";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoPowerOutline } from "react-icons/io5";
 
 // Alphabetical grouping logic for the apps
 const groupAppsAlphabetically = (apps) => {
@@ -57,7 +56,7 @@ const recommendedApps = [
 
 export default function StartMenu() {
   const menuRef = useRef(); // reference to the menu
-  const { isStartOpen, setIsStartOpen } = useStartMenu(); // state to open and close the menu state
+  const { isStartOpen, setIsStartOpen } = useStartMenu(); // state to open and close the start menu state
   const [allAppsView, setAllAppsView] = useState(false); // state to toggle between all apps and pinned apps
 
   // Close on Escape key or click outside of the menu
@@ -189,7 +188,7 @@ export default function StartMenu() {
               <span className="text-white text-sm">Prajwal</span>
             </div>
             <div className="flex items-center gap-3 hover:bg-white/10 p-3 rounded-md cursor-pointer">
-              <IoPowerOutline className="text-white text-xl" />
+            <img src="icons/ui/power.png" className="w-5 h-5 rounded-full" />
             </div>
           </div>
         </motion.div>

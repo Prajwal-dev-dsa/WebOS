@@ -10,12 +10,14 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { useStartMenu } from "../context/StartMenuContext";
+import { useSearchMenu } from "../context/SearchMenuContext";
 
 // this is the taskbar component which is used in the bottom of the screen. It is used to display the time, date, weather, and apps.
 const Taskbar = () => {
   const [time, setTime] = useState(""); // state to display the time
   const [date, setDate] = useState(""); // state to display the date
   const { toggleStartMenu } = useStartMenu(); //hook to use the start menu context to open and close the start menu
+  const { toggleSearchMenu } = useSearchMenu(); //hook to use the search menu context to open and close the search menu
 
   useEffect(() => {
     // set an interval to update the time and date every second
@@ -46,10 +48,15 @@ const Taskbar = () => {
       {/* CENTER SECTION: Pinned Apps */}
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-6 pl-20">
-          <button id="start-button" onClick={toggleStartMenu}>
-            <FaWindows className="text-xl cursor-pointer hover:scale-110 transition" />
-          </button>
-          <FaSearch className="text-xl cursor-pointer hover:scale-110 transition" />
+          <FaWindows
+            id="start-button"
+            onClick={toggleStartMenu}
+            className="text-xl cursor-pointer hover:scale-110 transition"
+          />
+          <FaSearch
+            onClick={toggleSearchMenu}
+            className="text-xl cursor-pointer hover:scale-110 transition"
+          />
           <FaFolder className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaChrome className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaYoutube className="text-xl cursor-pointer hover:scale-110 transition" />
@@ -65,17 +72,17 @@ const Taskbar = () => {
           <img
             src="/icons/ui/wifi.png"
             alt="Wifi"
-            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+            className="w-4.5 h-4.5 cursor-pointer hover:scale-110 transition invert"
           />
           <img
             src="/icons/ui/audio3.png"
             alt="Audio"
-            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+            className="w-4.5 h-4.5 cursor-pointer hover:scale-110 transition invert"
           />
           <img
             src="/icons/ui/battery.png"
             alt="Battery"
-            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+            className="w-4.5 h-4.5 cursor-pointer hover:scale-110 transition invert"
           />
           {/* Time & Date */}
           <div className="flex flex-col items-end leading-tight gap-1 pl-2 pr-5">

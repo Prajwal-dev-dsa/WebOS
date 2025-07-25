@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import PrivateRoute from "./components/PrivateRoute";
 import Desktop from "./pages/Desktop";
 import StartMenu from "./components/StartMenu";
+import SearchMenu from "./components/SearchMenu";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <PrivateRoute>
               <Desktop /> {/* desktop page */}
               <StartMenu /> {/* start menu component */}
+              <SearchMenu /> {/* search menu component */}
             </PrivateRoute>
           }
         />
