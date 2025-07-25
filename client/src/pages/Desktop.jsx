@@ -1,4 +1,5 @@
 import Taskbar from "../components/Taskbar";
+import DesktopIcons from "../components/DesktopIcons";
 
 const Desktop = () => {
   return (
@@ -6,7 +7,7 @@ const Desktop = () => {
       className="h-screen w-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
       style={{ backgroundImage: "url('/bg.jpg')" }}
     >
-      {/* Future draggable icons will go here */}
+      <DesktopIcons />
       <Taskbar />
     </div>
   );

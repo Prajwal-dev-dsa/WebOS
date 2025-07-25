@@ -6,9 +6,9 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
+import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useEffect, useState } from "react";
-import { Wifi, Volume2, BatteryFull } from "lucide-react";
 import { useStartMenu } from "../context/StartMenuContext";
 
 // this is the taskbar component which is used in the bottom of the screen. It is used to display the time, date, weather, and apps.
@@ -43,17 +43,9 @@ const Taskbar = () => {
         </div>
       </div>
 
-      {/* CENTER SECTION: Search Input + Pinned Apps */}
+      {/* CENTER SECTION: Pinned Apps */}
       <div className="flex items-center gap-6">
-        <div className="flex items-center bg-gray-800 px-3 py-1 rounded-full text-sm">
-          <FaSearch className="mr-2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="bg-transparent outline-none text-white placeholder-gray-400 w-36"
-          />
-        </div>
-        <div className="flex items-center gap-6 ">
+        <div className="flex items-center gap-6 pl-20">
           <button id="start-button" onClick={toggleStartMenu}>
             <FaWindows className="text-xl cursor-pointer hover:scale-110 transition" />
           </button>
@@ -61,20 +53,32 @@ const Taskbar = () => {
           <FaFolder className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaChrome className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaYoutube className="text-xl cursor-pointer hover:scale-110 transition" />
+          <IoSettingsSharp className="text-[1.4vw] cursor-pointer hover:scale-110 transition" />
         </div>
       </div>
 
       {/* RIGHT SECTION: Clock */}
       <div className="flex items-center gap-4">
         <MdOutlineKeyboardArrowUp className="cursor-pointer hover:scale-110 transition" />
-        <div className="flex items-center gap-2 text-white text-sm">
+        <div className="flex items-center gap-3 text-white text-sm">
           {/* Icons */}
-          <Wifi className="w-4 h-4 hover:scale-110 transition cursor-pointer" />
-          <Volume2 className="w-4 h-4 hover:scale-110 transition cursor-pointer" />
-          <BatteryFull className="w-4 h-4 hover:scale-110 transition cursor-pointer" />
-
+          <img
+            src="/icons/ui/wifi.png"
+            alt="Wifi"
+            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+          />
+          <img
+            src="/icons/ui/audio3.png"
+            alt="Audio"
+            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+          />
+          <img
+            src="/icons/ui/battery.png"
+            alt="Battery"
+            className="w-5 h-5 cursor-pointer hover:scale-110 transition invert"
+          />
           {/* Time & Date */}
-          <div className="flex flex-col items-end leading-tight gap-1 pl-3 pr-5">
+          <div className="flex flex-col items-end leading-tight gap-1 pl-2 pr-5">
             <span>{time}</span>
             <span>{date}</span>
           </div>
