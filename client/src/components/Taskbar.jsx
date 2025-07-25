@@ -9,28 +9,32 @@ import { WiHumidity } from "react-icons/wi";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { Wifi, Volume2, BatteryFull } from "lucide-react";
+import { useStartMenu } from "../context/StartMenuContext";
 
+// this is the taskbar component which is used in the bottom of the screen. It is used to display the time, date, weather, and apps.
 const Taskbar = () => {
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+  const [time, setTime] = useState(""); // state to display the time
+  const [date, setDate] = useState(""); // state to display the date
+  const { toggleStartMenu } = useStartMenu(); //hook to use the start menu context to open and close the start menu
 
   useEffect(() => {
+    // set an interval to update the time and date every second
     const interval = setInterval(() => {
       const now = new Date();
       const hours = now.getHours().toString().padStart(2, "0");
       const minutes = now.getMinutes().toString().padStart(2, "0");
       const formattedTime = `${hours}:${minutes}`;
       const formattedDate = now.toLocaleDateString("id-ID");
-      setTime(formattedTime);
-      setDate(formattedDate);
+      setTime(formattedTime); // set the time
+      setDate(formattedDate); // set the date
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // clear the interval when the component unmounts
   }, []);
 
   return (
     <div className="absolute bottom-0 left-0 w-full h-15 bg-black/80 backdrop-blur text-white flex items-center justify-between px-3 z-50">
-      {/* LEFT: News + Weather */}
+      {/* LEFT SECTION: News + Weather */}
       <div className="flex items-center gap-2 hover:bg-white/10 rounded-full px-4 py-2 cursor-pointer">
         <WiHumidity className="text-2xl text-sky-400" />
         <div className="flex flex-col leading-none text-sm">
@@ -39,7 +43,7 @@ const Taskbar = () => {
         </div>
       </div>
 
-      {/* CENTER: Search Input + Pinned Apps */}
+      {/* CENTER SECTION: Search Input + Pinned Apps */}
       <div className="flex items-center gap-6">
         <div className="flex items-center bg-gray-800 px-3 py-1 rounded-full text-sm">
           <FaSearch className="mr-2 text-gray-400" />
@@ -50,7 +54,9 @@ const Taskbar = () => {
           />
         </div>
         <div className="flex items-center gap-6 ">
-          <FaWindows className="text-xl cursor-pointer hover:scale-110 transition" />
+          <button id="start-button" onClick={toggleStartMenu}>
+            <FaWindows className="text-xl cursor-pointer hover:scale-110 transition" />
+          </button>
           <FaSearch className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaFolder className="text-xl cursor-pointer hover:scale-110 transition" />
           <FaChrome className="text-xl cursor-pointer hover:scale-110 transition" />
@@ -58,7 +64,7 @@ const Taskbar = () => {
         </div>
       </div>
 
-      {/* RIGHT: Clock */}
+      {/* RIGHT SECTION: Clock */}
       <div className="flex items-center gap-4">
         <MdOutlineKeyboardArrowUp className="cursor-pointer hover:scale-110 transition" />
         <div className="flex items-center gap-2 text-white text-sm">
