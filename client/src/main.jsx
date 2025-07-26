@@ -4,12 +4,15 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { StartMenuProvider } from "./context/StartMenuContext.jsx";
 import { SearchMenuProvider } from "./context/SearchMenuContext.jsx";
+import { WindowManagerProvider } from "./context/WindowManagerContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StartMenuProvider>
       <SearchMenuProvider>
-        <App />
+        <WindowManagerProvider>
+          <App />
+        </WindowManagerProvider>
       </SearchMenuProvider>
     </StartMenuProvider>
   </BrowserRouter>
